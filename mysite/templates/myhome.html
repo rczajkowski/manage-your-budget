@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Welcome, {{ user.username }}!</h2>
+
+    <h1>Incomes {{ incomesValue }}</h1>
+    <ul>
+        {% if incomes %}
+            {% for income in incomes %}
+                <li>{{ income.title }} - {{ income.category }} - {{ income.value }}</li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+
+    <h1>Outcomes {{ outcomesValue }}</h1>
+    <ul>
+        {% if outcomes %}
+            {% for outcomes in outcomes%}
+                <li>{{ outcomes.title }} - {{ outcomes.category }} - {{ outcomes.value }}</li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+
+    <h1>Summary:</h1>
+    {% if incomesValue|add:outcomesValue > 0%}
+        <p style="color:green">
+            {{ incomesValue|add:outcomesValue }}
+        </p>
+    {% endif %}
+
+{% endblock %}
