@@ -22,10 +22,13 @@
     </ul>
 
     <h1>Summary:</h1>
-    {% if incomesValue|add:outcomesValue > 0%}
-        <p style="color:green">
+
+        <p {% if incomesValue|add:outcomesValue > 0%}
+            style="color:green"
+            {% else %}
+            style="color:red">
+            {% endif %}
             {{ incomesValue|add:outcomesValue }}
         </p>
-    {% endif %}
 
 {% endblock %}

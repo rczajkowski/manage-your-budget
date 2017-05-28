@@ -46,14 +46,14 @@ def signup(request):
 @login_required
 def add(request):
     if request.method == 'POST':
-        form = FinanceForm(request.POST)
+        form = FinanceForm(request.user, request.POST)
         if form.is_valid():
             finance = form.save(commit=False)
             finance.user = request.user
             finance.save()
             return redirect('home')
     else:
-        form = FinanceForm()
+        form = FinanceForm(request.user)
     return render(request, 'outcome.html', {'form': form})
 
 

@@ -16,4 +16,4 @@ class Finance(models.Model):
     title = models.CharField(max_length=20)
     value = models.FloatField(null=False, default=0)
     category = models.ForeignKey(Category)
-    user = models.ForeignKey(User, default=1)
+    user = models.ForeignKey(User)

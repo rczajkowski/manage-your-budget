@@ -18,9 +18,16 @@ class SignUpForm(UserCreationForm):
 class CategoryForm(ModelForm):
     class Meta:
         model = Category
+        exclude = ('user',)
         fields = '__all__'
 
 class FinanceForm(ModelForm):
+    def __init__(self, user, *args, **kwargs):
+        super(FinanceForm, self).__init__(*args, **kwargs)
+
+        self.fields['category'].queryset = Category.objects.filter(user=user)
+
     class Meta:
         model = Finance
+        exclude = ('user',)
         fields = '__all__'
