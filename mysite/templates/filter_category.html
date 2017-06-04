@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul>
+        {% if finances %}
+            {% for finance in finances %}
+                <li>{{ finance.title }}-{{ finance.value }}</li>
+            {% endfor %}
+        {% else %}
+            <h1>Brak</h1>
+        {% endif %}
+    </ul>
+
+    <h1>Summary in category:</h1>
+    {{ summary }}
+{% endblock %}

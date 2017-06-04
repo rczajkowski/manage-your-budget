@@ -20,4 +20,14 @@
     </form>
 
 
+    <h1>Filter by category</h1>
+    <ul>
+        {% if categories %}
+            {% for category in categories %}
+                <li><a href="/my/category/{{ category.name }}">{{ category.name }}</a> </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+
+
 {% endblock %}
